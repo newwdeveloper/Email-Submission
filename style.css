@@ -1,0 +1,114 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center; /* Center container horizontally */
+  align-items: center; /* Center container vertically */
+}
+
+.container {
+  display: flex;
+
+  width: 90%; /* Increase for mobile responsiveness */
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  max-width: 1440px; /* Limit the width on larger screens */
+  margin: auto;
+  padding: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-wrap: wrap;
+  min-width: 790px;
+}
+
+.text {
+  flex: 1.1;
+
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  min-width: 370px;
+}
+.text h1 {
+  font-family: sans-serif;
+  font-size: 4rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: auto;
+}
+.heading span {
+  background: linear-gradient(
+    135deg,
+    hsl(0, 62%, 83%),
+    hsl(0, 73%, 55%)
+  ); /* Gradient colors */
+  -webkit-background-clip: text; /* For Safari */
+  background-clip: text; /* Clip background to text */
+  color: transparent; /* Makes the text itself transparent */
+  display: inline-block; /* Required for background-clip to work properly */
+}
+.text p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  width: 100%;
+  height: auto;
+  position: relative;
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Align items vertically center */
+}
+.res {
+  position: absolute;
+  top: 120%;
+  left: 05px;
+  border: 0px solid black;
+  background-color: bisque;
+  border-radius: 15px;
+  padding: 10px 20px;
+}
+
+.enter {
+  padding: 10px 25px;
+  width: 80%;
+  box-sizing: border-box; /* Include padding in width calculation */
+  border-radius: 15px;
+  border: 1px solid black;
+}
+
+.submit-btn {
+  background: none; /* Remove default button styling */
+  border: none; /* Remove border */
+  cursor: pointer; /* Change cursor on hover */
+  margin-left: -25px; /* Adjust to overlap the input */
+}
+.pic {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+.pic img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-position: top;
+  min-width: 375px;
+}
+
+@media (max-width: 790px) {
+  .pic {
+    display: none;
+  }
+  .container {
+    min-width: 375px;
+  }
+}

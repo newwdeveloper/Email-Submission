@@ -1,6 +1,7 @@
 const btn = document.querySelector(".submit-btn");
 const input = document.querySelector(".enter");
 const field = document.querySelector(".input-container");
+const message = document.createElement("div");
 
 // Regular expression to check for at least one uppercase letter, one lowercase letter, one special character, and a minimum length of 8 characters
 const valid = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$\^]).{8,}$/;
@@ -11,31 +12,31 @@ btn.addEventListener("click", function (event) {
   const inputValue = input.value;
   const isValid = valid.test(inputValue); // Test for valid characters
 
-  // Clear previous result messages
-  const previousResult = document.querySelector(".res");
-  if (previousResult) {
-    previousResult.remove();
-  }
+  // Remove any previous messages before showing new ones
+  removeMessage();
 
-  // Call the function to display the result
-  displayResult(isValid);
+  // Call the function to display the result with appropriate message and color
+  if (isValid) {
+    displayResult("Valid password.", "green");
+  } else {
+    displayResult("Invalid password.", "red");
+  }
 });
 
-// Function to display the result
-function displayResult(isValid) {
-  const show = document.createElement("div");
-  show.classList.add("res"); // Add a class for styling
-  field.appendChild(show);
+// Function to display the result with message and color
+function displayResult(text, color) {
+  message.classList.add("res"); // Add a class for styling
+  message.textContent = text; // Set the message text
+  message.style.backgroundColor = color; // Set the background color
+  message.style.color = "white"; // Change text color to white for better contrast
+  field.appendChild(message); // Append the message to the container
+}
 
-  if (isValid) {
-    console.log("valid password");
-    show.textContent = "Valid password."; // Set text for the valid message
-    show.style.backgroundColor = "green"; // Set background color to green
-    show.style.color = "white"; // Change text color to white for better contrast
-  } else {
-    console.log("invalid password");
-    show.textContent = "Invalid password."; // Set text for the invalid message
-    show.style.backgroundColor = "red"; // Set background color to red
-    show.style.color = "white"; // Change text color to white for better contrast
+// Function to remove the message when user starts typing
+input.addEventListener("input", removeMessage);
+
+function removeMessage() {
+  if (field.contains(message)) {
+    field.removeChild(message);
   }
 }
